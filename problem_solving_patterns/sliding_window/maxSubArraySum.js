@@ -27,17 +27,17 @@ function maxSubArraySum_naive(arr, num){
 //time complexity ---> O(n)
 function maxSubArraySum_refactored(arr, num){
     let maxSum = 0;
-    let tempSum = 0;
+    let currentSum = 0;
     if(num > arr.length){
         return null;
     }
     for(let i = 0; i< num; i++){
         maxSum += arr[i];
     }
-    tempSum = maxSum;
+    currentSum = maxSum;
     for(let i = num; i< arr.length; i++){
-        tempSum = tempSum - arr[i-num] + arr[i];
-        maxSum(Math.max(maxSum, tempSum));
+        currentSum = currentSum - arr[i-num] + arr[i];
+        maxSum = (Math.max(maxSum, currentSum));
     }
 
     return maxSum;
