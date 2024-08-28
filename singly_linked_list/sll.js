@@ -100,4 +100,71 @@ class SinglyLinkedList{
             return false;
         }
     }
+
+    insert(index, val){
+        if(index < 0 || index > this.length) return false;
+
+        if(index === this.length){
+            return !!this.push(val); //convert to boolean
+        }
+
+        if(index === 0){
+            return !!this.unshift(val); //convert to boolean
+        }
+
+        let prev = this.get(index-1);
+        let newNode = new Node(val);
+        //need to save the prev next in a variable
+        let temp = prev.next;
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;
+        return true;
+    }
+
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === this.length - 1){
+            return this.pop();
+        }
+        if(index === 0){
+            return this.shift(val);
+        }
+
+        let prevNode = this.get(index-1);
+        let removed = prevNode.next;
+        prevNode.next = removed.next;
+        this.length--;
+        return removed;
+    }
+
+    reverse(){
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+
+        let next;
+        let prev = null;
+
+        for(let i=0; i< this.length; i++){
+            next = node.next;
+            node.next = prev;
+            //below code needed for changing direction
+            prev = node;
+            node = next;
+        }
+
+        return this;
+    }
+
+    print(){
+        let arr = [];
+        let current = this.head;
+        while(current){
+            arr.push(current.val);
+            current = current.next;
+        }
+
+        console.log(arr);
+    }
 }
