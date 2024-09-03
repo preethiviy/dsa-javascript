@@ -1,5 +1,6 @@
 /*
-    Implement a function called, areThereDuplicates which accepts a variable number of arguments, and checks whether there are any duplicates among the arguments passed in.
+    Implement a function called, areThereDuplicates which accepts a variable number of arguments, 
+    and checks whether there are any duplicates among the arguments passed in.
     Examples:
 
     areThereDuplicates(1, 2, 3) // false
